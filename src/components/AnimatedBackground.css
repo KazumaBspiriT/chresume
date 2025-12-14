@@ -1,0 +1,71 @@
+.animated-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.code-overlay {
+  position: fixed;
+  top: 20%;
+  right: 5%;
+  z-index: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: rgba(99, 102, 241, 0.3);
+  line-height: 1.8;
+  pointer-events: none;
+  animation: codeFade 8s ease-in-out infinite;
+  max-width: 300px;
+}
+
+.code-line {
+  opacity: 0.4;
+  animation: codeLine 3s ease-in-out infinite;
+}
+
+.code-line:nth-child(1) { animation-delay: 0s; }
+.code-line:nth-child(2) { animation-delay: 0.5s; }
+.code-line:nth-child(3) { animation-delay: 1s; }
+.code-line:nth-child(4) { animation-delay: 1.5s; }
+.code-line:nth-child(5) { animation-delay: 2s; }
+.code-line:nth-child(6) { animation-delay: 2.5s; }
+
+@keyframes codeFade {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes codeLine {
+  0%, 100% { opacity: 0.2; transform: translateX(0); }
+  50% { opacity: 0.5; transform: translateX(10px); }
+}
+
+.grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+  pointer-events: none;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+@media (max-width: 768px) {
+  .code-overlay {
+    display: none;
+  }
+}
