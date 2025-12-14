@@ -1,6 +1,11 @@
+import { useRef } from 'react'
+import DecodeText from './DecodeText'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import './Skills.css'
 
 const Skills = () => {
+  const sectionRef = useScrollAnimation()
+  
   const skillCategories = [
     {
       title: 'Languages',
@@ -28,7 +33,7 @@ const Skills = () => {
   ]
 
   return (
-    <section id="skills" className="skills">
+    <section id="skills" className="skills" ref={sectionRef}>
       <div className="section-container">
         <h2 className="section-title">Technical Skills</h2>
         <div className="skills-container">
@@ -37,7 +42,9 @@ const Skills = () => {
               <h3 className="category-title">{category.title}</h3>
               <div className="skills-list">
                 {category.skills.map((skill, idx) => (
-                  <span key={idx} className="skill-item">{skill}</span>
+                  <span key={idx} className="skill-item">
+                    <DecodeText text={skill} />
+                  </span>
                 ))}
               </div>
             </div>
@@ -49,7 +56,7 @@ const Skills = () => {
             {certifications.map((cert, idx) => (
               <div key={idx} className="certification-item">
                 <span className="cert-icon">🏆</span>
-                <span>{cert}</span>
+                <span><DecodeText text={cert} /></span>
               </div>
             ))}
           </div>

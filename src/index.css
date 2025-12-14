@@ -5,40 +5,31 @@
 }
 
 :root {
-  --primary: #94a3b8; /* Slate 400 */
-  --primary-dark: #64748b; /* Slate 500 */
-  --primary-light: #cbd5e1; /* Slate 300 */
-  --accent: #38bdf8; /* Sky 400 - subtle pop */
-  --accent-2: #818cf8; /* Indigo 400 - subtle pop */
-  --text: #f1f5f9; /* Slate 100 */
-  --text-light: #94a3b8; /* Slate 400 */
-  --text-dark: #ffffff;
-  --bg: #020617; /* Slate 950 - Very dark blue-grey */
-  --bg-alt: #0f172a; /* Slate 900 */
-  --bg-card: rgba(15, 23, 42, 0.6);
-  --border: rgba(148, 163, 184, 0.1);
-  --shadow: rgba(0, 0, 0, 0.4);
-  --shadow-lg: rgba(0, 0, 0, 0.6);
-  --glow: rgba(56, 189, 248, 0.1);
+  --primary: #a3b3bc; /* Muted tech gray */
+  --primary-dark: #64748b;
+  --primary-light: #e2e8f0;
+  --accent: #2dd4bf; /* Teal - clean syntax color */
+  --accent-2: #818cf8; /* Purple - syntax color */
+  --text: #e2e8f0;
+  --text-light: #94a3b8;
+  --text-dark: #f8fafc;
+  --bg: #0f1115; /* Jet black/gray - IDE background */
+  --bg-alt: #161b22; /* Github-like dark */
+  --bg-card: #161b22;
+  --border: #30363d; /* Subtle border */
+  --shadow: rgba(0, 0, 0, 0.5);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 
-    'Helvetica', 'Arial', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
   background-image: 
-    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.03) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.03) 0px, transparent 50%);
-  background-attachment: fixed;
-  line-height: 1.6;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  position: relative;
-  overflow-x: hidden;
-  min-height: 100vh;
+    linear-gradient(rgba(48, 54, 61, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(48, 54, 61, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  /* Removed radial gradients for cleaner look */
 }
 
 body::before {

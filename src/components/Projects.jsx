@@ -1,6 +1,10 @@
+import DecodeText from './DecodeText'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import './Projects.css'
 
 const Projects = () => {
+  const sectionRef = useScrollAnimation()
+
   const projects = [
     {
       title: 'PlayGround App',
@@ -46,7 +50,7 @@ const Projects = () => {
   ]
 
   return (
-    <section id="projects" className="projects">
+    <section id="projects" className="projects" ref={sectionRef}>
       <div className="section-container">
         <h2 className="section-title">Projects</h2>
         <div className="projects-grid">
@@ -64,7 +68,9 @@ const Projects = () => {
               </ul>
               <div className="project-tech">
                 {project.tech.map((tech, idx) => (
-                  <span key={idx} className="tech-tag">{tech}</span>
+                  <span key={idx} className="tech-tag">
+                    <DecodeText text={tech} />
+                  </span>
                 ))}
               </div>
             </div>

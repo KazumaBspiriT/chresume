@@ -19,123 +19,144 @@
 }
 
 .name {
-  font-size: 80px;
+  font-family: var(--font-mono);
+  font-size: 64px;
   font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.015em;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   color: var(--text-dark);
-  /* Removed shiny gradient and glow */
+  letter-spacing: -0.03em;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out forwards;
 }
 
 .title {
-  font-size: 28px;
-  font-weight: 500;
-  line-height: 1.14286;
-  letter-spacing: 0.007em;
-  color: var(--primary-light);
-  margin-bottom: 40px;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out 0.2s forwards;
+}
+
+.title::before {
+  content: '>';
+  color: var(--text-light);
+}
+
+.title::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
 .description {
-  font-size: 21px;
-  line-height: 1.381;
-  letter-spacing: 0.011em;
+  font-size: 18px;
+  line-height: 1.6;
   color: var(--text);
   margin-bottom: 40px;
   font-weight: 400;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out 0.4s forwards;
 }
 
 .description strong {
   font-weight: 600;
   color: var(--text-dark);
+  border-bottom: 1px solid var(--accent);
 }
 
 .contact-links {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out 0.6s forwards;
 }
 
 .contact-link {
+  font-family: var(--font-mono);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   color: var(--text-light);
   text-decoration: none;
-  font-size: 17px;
-  font-weight: 400;
-  padding: 12px 22px;
-  border-radius: 980px;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 4px;
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--bg-alt);
   transition: all 0.2s ease;
-  letter-spacing: -0.022em;
 }
 
 .contact-link:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--border);
   border-color: var(--text-light);
   color: var(--text);
   transform: translateY(-2px);
 }
 
-.contact-link span {
-  font-size: 20px;
-}
-
 .education-card {
-  background: var(--bg-card);
-  padding: 40px;
-  border-radius: 18px;
+  background: var(--bg-alt);
+  padding: 32px;
+  border-radius: 6px;
   border: 1px solid var(--border);
   transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out 0.4s forwards;
 }
 
 .education-card:hover {
-  border-color: var(--text-light);
+  border-color: var(--accent);
 }
 
 .education-card h3 {
-  font-size: 28px;
+  font-family: var(--font-mono);
+  font-size: 20px;
   font-weight: 600;
-  line-height: 1.14286;
-  letter-spacing: 0.007em;
   margin-bottom: 24px;
   color: var(--text-dark);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
 }
 
 .education-item h4 {
-  font-size: 21px;
+  font-size: 18px;
   font-weight: 600;
-  line-height: 1.381;
-  letter-spacing: 0.011em;
   margin-bottom: 8px;
   color: var(--text-dark);
 }
 
 .institution {
-  color: var(--primary-light);
-  font-weight: 500;
-  font-size: 17px;
-  line-height: 1.47059;
-  letter-spacing: -0.022em;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 14px;
   margin-bottom: 8px;
 }
 
 .details {
   color: var(--text-light);
-  font-size: 17px;
-  line-height: 1.47059;
-  letter-spacing: -0.022em;
+  font-size: 14px;
+  font-family: var(--font-mono);
   margin-bottom: 16px;
 }
 
-.coursework {
-  font-size: 17px;
-  line-height: 1.47059;
-  letter-spacing: -0.022em;
-  color: var(--text);
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 1068px) {
@@ -143,43 +164,15 @@
     grid-template-columns: 1fr;
     gap: 60px;
   }
-
   .name {
-    font-size: 64px;
+    font-size: 48px;
   }
 }
 
 @media (max-width: 768px) {
-  .about {
-    padding-top: 80px;
-  }
-
-  .about-container {
-    padding: 0 22px;
-  }
-
-  .name {
-    font-size: 48px;
-  }
-
-  .title {
-    font-size: 24px;
-  }
-
-  .description {
-    font-size: 19px;
-  }
-
-  .contact-links {
-    flex-direction: column;
-  }
-
-  .contact-link {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .education-card {
-    padding: 28px;
-  }
+  .about { padding-top: 80px; }
+  .name { font-size: 36px; }
+  .title { font-size: 20px; }
+  .contact-links { flex-direction: column; }
+  .contact-link { width: 100%; justify-content: center; }
 }
