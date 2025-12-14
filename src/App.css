@@ -1,20 +1,30 @@
-/* Tech Reveal Animation */
-section.animate-in {
-  animation: techReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+/* 3D Book Open / Card Flip Animation */
+main {
+  perspective: 1000px; /* Essential for 3D effect */
+  transform-style: preserve-3d;
 }
 
-@keyframes techReveal {
+section.animate-in {
+  animation: bookOpen 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: top center; /* Hinges from the top like a page */
+  will-change: transform, opacity;
+}
+
+@keyframes bookOpen {
   0% {
     opacity: 0;
-    transform: translateY(30px) scale(0.98);
-    filter: blur(10px);
+    transform: rotateX(-45deg) translateY(100px) scale(0.9);
+    filter: blur(8px) brightness(0.5); /* Start darker/blurred */
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
+    transform: rotateX(0deg) translateY(0) scale(1);
+    filter: blur(0) brightness(1);
   }
 }
+
+/* Page Tear / Glitch Reveal alternative for specific elements if needed */
+/* Keeping the connector line and other styles intact */
 
 /* Connector Line */
 .connector-line-container {
