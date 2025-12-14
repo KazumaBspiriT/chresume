@@ -1,8 +1,11 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import './About.css'
 
 const About = () => {
+  const sectionRef = useScrollAnimation()
+
   return (
-    <section id="about" className="about">
+    <section id="about" className="about" ref={sectionRef}>
       <div className="section-container">
         <div className="about-content">
           <div className="about-text">

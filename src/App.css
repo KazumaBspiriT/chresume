@@ -1,5 +1,5 @@
 /* Tech Reveal Animation */
-.animate-in {
+section.animate-in {
   animation: techReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
@@ -13,6 +13,37 @@
     opacity: 1;
     transform: translateY(0) scale(1);
     filter: blur(0);
+  }
+}
+
+/* Connector Line */
+.connector-line-container {
+  position: fixed;
+  left: 44px; /* Align with section padding */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(148, 163, 184, 0.1); /* Faint guide */
+  z-index: 10;
+  pointer-events: none;
+}
+
+.connector-line {
+  width: 100%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  transition: height 0.1s linear;
+}
+
+@media (max-width: 1280px) {
+  .connector-line-container {
+    left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .connector-line-container {
+    display: none; /* Hide on mobile */
   }
 }
 
@@ -68,4 +99,38 @@ body::after {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 80px; /* Increased padding for better centering */
+  position: relative;
+}
+
+.section-title {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 60px;
+  color: var(--text);
+  text-align: center;
+  position: relative;
+  /* Removed default animation to rely on section reveal */
+}
+
+section {
+  width: 100%;
+  padding: 100px 0;
+  scroll-margin-top: 80px;
+  position: relative;
+  opacity: 0; /* Ensures sections are invisible initially */
+}
+
+/* Ensure the first section is visible immediately if it doesn't intersect fast enough, 
+   OR let the observer handle it. Usually observer is fast. 
+   But to be safe for "About": */
+#about {
+  min-height: 100vh; /* Ensure it takes full screen */
 }

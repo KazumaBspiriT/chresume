@@ -1,6 +1,9 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import './Experience.css'
 
 const Experience = () => {
+  const sectionRef = useScrollAnimation()
+
   const experiences = [
     {
       title: 'Software Developer',
@@ -31,7 +34,7 @@ const Experience = () => {
   ]
 
   return (
-    <section id="experience" className="experience">
+    <section id="experience" className="experience" ref={sectionRef}>
       <div className="section-container">
         <h2 className="section-title">Experience</h2>
         <div className="experience-timeline">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Header from './components/Header'
 import About from './components/About'
 import Experience from './components/Experience'
@@ -13,12 +13,21 @@ import './App.css'
 
 function App() {
   const [activeSection, setActiveSection] = useState('about')
+  const [scrollHeight, setScrollHeight] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['about', 'experience', 'projects', 'skills', 'contact']
-      const scrollPosition = window.scrollY + 200
+      const scrollY = window.scrollY
+      const viewportHeight = window.innerHeight
+      const fullHeight = document.documentElement.scrollHeight
+      
+      // Update connector line height
+      const scrolledPercentage = (scrollY / (fullHeight - viewportHeight)) * 100
+      setScrollHeight(scrolledPercentage)
 
+      // Update active section
+      const scrollPosition = scrollY + 200
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
@@ -41,6 +50,15 @@ function App() {
       <RotatingWheel />
       <FloatingParticles />
       <ScrollProgress />
+      
+      {/* Connector Line */}
+      <div className="connector-line-container">
+        <div 
+          className="connector-line" 
+          style={{ height: `${scrollHeight}%` }}
+        ></div>
+      </div>
+
       <Header activeSection={activeSection} />
       <main>
         <About />

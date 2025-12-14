@@ -1,8 +1,11 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import './Contact.css'
 
 const Contact = () => {
+  const sectionRef = useScrollAnimation()
+
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className="contact" ref={sectionRef}>
       <div className="section-container">
         <h2 className="section-title">Get In Touch</h2>
         <div className="contact-content">
