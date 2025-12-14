@@ -9,22 +9,22 @@
 
 .about-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 120px;
-  align-items: center;
+  grid-template-columns: 1.2fr 0.8fr; /* Text takes more space */
+  gap: 80px;
+  align-items: flex-start;
 }
 
 .about-text {
-  max-width: 600px;
+  max-width: 100%;
 }
 
 .name {
   font-family: var(--font-mono);
-  font-size: 64px;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-size: 72px; /* Bigger */
+  font-weight: 800;
+  margin-bottom: 12px;
   color: var(--text-dark);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   opacity: 0;
   animation: fadeUp 0.8s ease-out forwards;
 }
@@ -33,7 +33,7 @@
   font-family: var(--font-mono);
   font-size: 24px;
   color: var(--accent);
-  margin-bottom: 32px;
+  margin-bottom: 40px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -56,25 +56,26 @@
 }
 
 .description {
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 20px;
+  line-height: 1.7;
   color: var(--text);
-  margin-bottom: 40px;
+  margin-bottom: 48px;
   font-weight: 400;
   opacity: 0;
   animation: fadeUp 0.8s ease-out 0.4s forwards;
+  max-width: 650px;
 }
 
 .description strong {
   font-weight: 600;
   color: var(--text-dark);
-  border-bottom: 1px solid var(--accent);
+  color: var(--accent-2); /* Purple highlight */
 }
 
 .contact-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 24px;
   opacity: 0;
   animation: fadeUp 0.8s ease-out 0.6s forwards;
 }
@@ -86,50 +87,64 @@
   gap: 8px;
   color: var(--text-light);
   text-decoration: none;
-  font-size: 14px;
-  padding: 10px 20px;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  background: var(--bg-alt);
+  font-size: 15px;
+  padding: 0;
+  border: none;
+  background: transparent;
   transition: all 0.2s ease;
+  position: relative;
+}
+
+.contact-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s;
 }
 
 .contact-link:hover {
-  background: var(--border);
-  border-color: var(--text-light);
-  color: var(--text);
-  transform: translateY(-2px);
+  background: transparent;
+  color: var(--accent);
+  transform: none;
+}
+
+.contact-link:hover::after {
+  width: 100%;
 }
 
 .education-card {
-  background: var(--bg-alt);
-  padding: 32px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
+  background: transparent; /* Removed box */
+  padding: 0;
+  border: none;
+  border-left: 1px solid var(--border); /* Just a clean side line */
+  padding-left: 32px;
   opacity: 0;
   animation: fadeUp 0.8s ease-out 0.4s forwards;
 }
 
 .education-card:hover {
-  border-color: var(--accent);
+  border-left-color: var(--accent);
 }
 
 .education-card h3 {
   font-family: var(--font-mono);
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 24px;
-  color: var(--text-dark);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  padding: 0;
 }
 
 .education-item h4 {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
   margin-bottom: 8px;
   color: var(--text-dark);
 }
@@ -137,7 +152,7 @@
 .institution {
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 8px;
 }
 
@@ -146,6 +161,7 @@
   font-size: 14px;
   font-family: var(--font-mono);
   margin-bottom: 16px;
+  opacity: 0.8;
 }
 
 @keyframes fadeUp {
@@ -165,14 +181,20 @@
     gap: 60px;
   }
   .name {
-    font-size: 48px;
+    font-size: 56px;
+  }
+  .education-card {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
   }
 }
 
 @media (max-width: 768px) {
   .about { padding-top: 80px; }
-  .name { font-size: 36px; }
+  .name { font-size: 42px; }
   .title { font-size: 20px; }
-  .contact-links { flex-direction: column; }
-  .contact-link { width: 100%; justify-content: center; }
+  .contact-links { flex-direction: column; gap: 12px; }
+  .contact-link { width: auto; justify-content: flex-start; }
 }

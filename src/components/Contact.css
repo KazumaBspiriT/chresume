@@ -9,9 +9,9 @@
 }
 
 .contact-description {
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--text);
   margin-bottom: 60px;
   font-family: var(--font-mono);
@@ -20,7 +20,7 @@
 .contact-methods {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 40px;
   margin-bottom: 80px;
 }
 
@@ -28,50 +28,53 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 24px;
-  background: var(--bg-alt);
-  border-radius: 6px;
-  border: 1px solid var(--border);
+  padding: 0;
+  background: transparent; /* Removed box */
+  border: none;
   text-decoration: none;
   color: var(--text);
   transition: all 0.2s ease;
+  position: relative;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
 }
 
 .contact-method:hover {
   transform: translateY(-2px);
-  border-color: var(--accent);
-  background: var(--bg-alt);
+  border-bottom-color: var(--accent);
+  background: transparent;
 }
 
 .contact-icon {
   font-size: 24px;
-  width: 48px;
-  height: 48px;
+  width: auto;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--border);
-  border-radius: 4px;
-  transition: all 0.2s;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
 }
 
 .contact-method:hover .contact-icon {
-  background: rgba(45, 212, 191, 0.1);
+  background: transparent;
   color: var(--accent);
 }
 
 .contact-info h3 {
   font-family: var(--font-mono);
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   margin-bottom: 4px;
-  color: var(--text-dark);
+  color: var(--text-light);
+  text-transform: uppercase;
 }
 
 .contact-info p {
   font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--text-light);
+  font-size: 16px;
+  color: var(--text-dark);
 }
 
 .footer {

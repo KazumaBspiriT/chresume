@@ -6,28 +6,60 @@
 .experience-timeline {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 60px;
+  position: relative;
+  padding-left: 20px; /* Space for the timeline line */
+}
+
+/* Vertical Timeline Line */
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--border);
 }
 
 .experience-item {
-  background: var(--bg-alt);
-  padding: 32px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  transition: all 0.2s ease;
+  background: transparent; /* Removed box background */
+  padding: 0; /* Removed padding */
+  border: none; /* Removed border */
+  box-shadow: none; /* Removed shadow */
   position: relative;
+  padding-left: 40px; /* Space from the line */
 }
 
-.experience-item:hover {
-  transform: translateY(-2px);
-  border-color: var(--text-light);
+/* "Commit Dot" on the timeline */
+.experience-item::before {
+  content: '';
+  position: absolute;
+  left: -24px; /* Center on the line (left:0 is line position + 20px padding parent? No, relative to item) */
+  /* Parent padding-left is 20px. Line is at 0. Item starts at 0 relative to parent. */
+  /* Actually, let's position relative to the item content */
+  left: -25px; 
+  top: 8px;
+  width: 11px;
+  height: 11px;
+  background: var(--bg);
+  border: 2px solid var(--text-light);
+  border-radius: 50%;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
 }
 
 .experience-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
   gap: 16px;
 }
@@ -38,16 +70,16 @@
 
 .experience-title {
   font-family: var(--font-mono);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
 }
 
 .experience-company {
   font-size: 16px;
   font-weight: 500;
-  color: var(--text-dark);
+  color: var(--accent);
   margin-bottom: 4px;
 }
 
@@ -56,53 +88,56 @@
   color: var(--text-light);
   font-style: italic;
   font-family: var(--font-mono);
+  opacity: 0.8;
 }
 
 .experience-period {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-light);
   white-space: nowrap;
-  padding: 6px 12px;
-  background: var(--border);
-  border-radius: 4px;
+  /* Removed box style */
 }
 
 .experience-achievements {
   list-style: none;
   padding: 0;
-  margin-top: 20px;
-  border-left: 2px solid var(--border);
-  padding-left: 20px;
+  margin-top: 16px;
 }
 
 .experience-achievements li {
   position: relative;
-  margin-bottom: 12px;
-  font-size: 15px;
-  line-height: 1.6;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.7;
   color: var(--text);
+  opacity: 0.9;
 }
 
 .experience-achievements li::before {
   content: '>';
   position: absolute;
-  left: -20px;
+  left: 0;
   color: var(--text-light);
   font-family: var(--font-mono);
   font-size: 14px;
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {
+  .experience-timeline {
+    padding-left: 0;
+  }
+  .experience-timeline::before {
+    display: none;
+  }
   .experience-item {
-    padding: 24px;
+    padding-left: 0;
+    border-left: 2px solid var(--border);
+    padding-left: 20px;
   }
-
-  .experience-header {
-    flex-direction: column;
-  }
-
-  .experience-period {
-    align-self: flex-start;
+  .experience-item::before {
+    display: none;
   }
 }
